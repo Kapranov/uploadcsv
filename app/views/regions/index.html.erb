@@ -1,0 +1,28 @@
+<%= flash[:notice] %>
+<table>
+  <thead>
+    <tr>
+      <th>ISO</th>
+      <th>Country</th>
+      <th>Name</th>
+      <th>Region1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @regions.each do |region| %>
+      <tr>
+        <td><%= region.iso %></td>
+        <td><%= region.country %></td>
+        <td><%= region.name %></td>
+        <td><%= region.region1 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+<h3>Import a CSV File</h3>
+  <%= form_tag import_regions_path, multipart: true do %>
+    <%= file_field_tag :file, :accept => "text/csv" %>
+    <%= submit_tag "Upload" %>
+  <% end %>
+</div>
